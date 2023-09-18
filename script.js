@@ -2,7 +2,7 @@ const apiEP = "https://randomuser.me/api/?results=20";
 
 let userList = [];
 
-
+// const totalCount =
 const fetchUser = async (url) => {
 
     try {
@@ -29,6 +29,7 @@ const fetchUser = async (url) => {
 fetchUser(apiEP);
 
 const display = (users) => {
+    document.getElementById("count").innerHTML = users.length;
     let str = ""
 
     const listElm = document.getElementById("list");
@@ -72,3 +73,7 @@ document.getElementById("search").addEventListener("keyup", (e) => {
     })
     display(filteredArg);
 })
+
+// const total = () => {
+//     const ttl = userList.reduce((acc, item) => acc + item)
+// }
