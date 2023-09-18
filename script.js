@@ -32,7 +32,7 @@ const display = (users) => {
     let str = ""
 
     const listElm = document.getElementById("list");
-    userList.map((item, i)=>{
+    users.map((item, i)=>{
         str += `<div class="card flex-grow-1" style="width: 18rem;">
         <img src="${item?.picture?.large}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -59,3 +59,16 @@ const handleOnGenderSelect = e => {
 
     fetchUser(url);
 }
+
+document.getElementById("search").addEventListener("keyup", (e) => {
+    const {value} = e.target;
+
+    const filteredArg = userList.filter((usr) =>{
+        const fullName = `${usr.name.first} ${usr.name.last}`.toLowerCase();
+
+        if(fullName.includes(value.toLowerCase())) {
+            return true;
+        }
+    })
+    display(filteredArg);
+})
